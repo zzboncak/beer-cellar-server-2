@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const request = require('request');
+const beersRouter = require('./beers/beers-router');
 
 const app = express();
 
@@ -16,11 +17,13 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
+app.use('/api/beers', beersRouter);
+
 app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
-app.get('/beerId', (req, res) => {
+app.get('/test', (req, res) => {
 
   let options = {
     'method': 'GET',
@@ -34,7 +37,12 @@ app.get('/beerId', (req, res) => {
     res.send(response.body);
   });
   
-})
+});
+
+// app.get('/beers', (req, res) => {
+//   BeersService.getAllBeers(req.app.get('db'))
+//     .then(response => res.send(response))
+// });
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
