@@ -11,6 +11,15 @@ const BeersService = {
             .where('id', id)
             .first()
     },
+    addBeer(knex, beerToAdd) {
+        return knex
+            .insert(beerToAdd)
+            .into('beers')
+            .returning('*')
+            .then(rows => {
+                return rows[0]
+            })
+    }
 };
 
 module.exports = BeersService;

@@ -10,6 +10,17 @@ beersRouter
         BeersService.getAllBeers(req.app.get('db'))
             .then(response => res.send(response))
             .catch(next)
+    })
+    .post(jsonParser, (req, res, next) => {
+        const { untappd_beer_id, beer_name, untappd_rating, beer_description, brewery_id, brewery_name, beer_image } = req.body;
+        const newBeer = { untappd_beer_id, beer_name, untappd_rating, beer_description, brewery_id, brewery_name, beer_image};
+
+        BeersService.addBeer(
+            req.app.get('db'),
+            newBeer
+        )
+            .then(response => res.status(201).json(response))
+            .catch(next)
     });
 
 beersRouter
