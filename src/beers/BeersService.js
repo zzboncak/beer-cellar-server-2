@@ -19,6 +19,11 @@ const BeersService = {
             .then(rows => {
                 return rows[0]
             })
+    },
+    deleteBeer(knex, beerId) {
+        return knex('beers')
+            .where('id', beerId)
+            .delete()
     }
 };
 

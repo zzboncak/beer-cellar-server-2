@@ -53,5 +53,15 @@ beersRouter
             })
             .catch(next)
     })
+    .delete((req, res, next) => {
+        BeersService.deleteBeer(
+            req.app.get('db'),
+            req.params.beer_id
+        )
+            .then(numRowsAffected => {
+                res.status(204).end()
+            })
+            .catch(next)
+    })
 
 module.exports = beersRouter;
