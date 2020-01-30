@@ -2,9 +2,9 @@ DROP TABLE beers;
 
 DROP TABLE users;
 
-DROP TYPE friend_options;
-
 DROP TABLE friends;
+
+DROP TYPE friend_options;
 
 DROP TABLE inventory;
 
