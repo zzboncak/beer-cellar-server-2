@@ -52,3 +52,8 @@ CREATE TABLE trades (
     beer_id INTEGER REFERENCES beers(id) NOT NULL,
     date_of_trade TIMESTAMP DEFAULT now()
 );
+
+INSERT INTO users (username, user_password)
+VALUES 
+    ('zzboncak', 'password'),
+    ('rileym', 'Password123');

@@ -7,6 +7,7 @@ const jsonParser = express.json();
 beersRouter
     .route('/')
     .get((req, res, next) => {
+        console.log(req);
         BeersService.getAllBeers(req.app.get('db'))
             .then(response => res.send(response))
             .catch(next)
